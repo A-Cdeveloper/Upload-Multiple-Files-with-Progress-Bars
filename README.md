@@ -1,69 +1,109 @@
-# React + TypeScript + Vite
+# Multi-File Upload App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for uploading multiple files with progress tracking, built using Vite, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Multiple file selection**: Select and upload multiple files at once.
+- **Progress tracking**: See real-time upload progress for each file.
+- **File details**: View file name, size, and type with appropriate icons.
+- **Remove files**: Remove individual files before uploading.
+- **Clear all**: Remove all selected files with a single click.
+- **Responsive UI**: Clean and modern interface styled with Tailwind CSS.
+- **API integration**: Uploads files to a configurable endpoint (currently uses [httpbin.org](https://httpbin.org/post) for demo purposes).
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Axios](https://axios-http.com/) (for HTTP requests)
+- [Lucide React](https://lucide.dev/) (for icons)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <your-repo-url>
+   cd 13-mulitifile-upload
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+# or
+yarn build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Preview Production Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run preview
+# or
+yarn preview
 ```
+
+### Lint the Code
+
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## Docker
+
+You can run the app in a Docker container:
+
+```bash
+docker build -t multi-file-upload .
+docker run -p 3000:3000 multi-file-upload
+```
+
+The app will be available at [http://localhost:3000](http://localhost:3000).
+
+## Project Structure
+
+- `src/components/` – React components for file upload, file list, progress bar, etc.
+- `src/lib/` – Utility functions (file size formatting, icon selection).
+- `src/App.tsx` – Main app component.
+- `src/main.tsx` – Entry point.
+- `index.html` – HTML template.
+- `tailwind.config.js` – Tailwind CSS configuration.
+
+## Customization
+
+- **Upload endpoint**: Change the upload URL in `src/components/FileUpload.tsx` (`axios.post(...)`) to your backend endpoint.
+- **Styling**: Modify `tailwind.config.js` and component classes for custom themes.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
